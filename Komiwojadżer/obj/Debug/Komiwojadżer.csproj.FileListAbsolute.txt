@@ -1,7 +1,0 @@
-C:\Users\mscia\source\repos\Komiwojadżer\Komiwojadżer\bin\Debug\Komiwojadżer.exe.config
-C:\Users\mscia\source\repos\Komiwojadżer\Komiwojadżer\bin\Debug\Komiwojadżer.exe
-C:\Users\mscia\source\repos\Komiwojadżer\Komiwojadżer\bin\Debug\Komiwojadżer.pdb
-C:\Users\mscia\source\repos\Komiwojadżer\Komiwojadżer\obj\Debug\Komiwojadżer.csprojAssemblyReference.cache
-C:\Users\mscia\source\repos\Komiwojadżer\Komiwojadżer\obj\Debug\Komiwojadżer.csproj.CoreCompileInputs.cache
-C:\Users\mscia\source\repos\Komiwojadżer\Komiwojadżer\obj\Debug\Komiwojadżer.exe
-C:\Users\mscia\source\repos\Komiwojadżer\Komiwojadżer\obj\Debug\Komiwojadżer.pdb
