@@ -8,7 +8,7 @@ namespace Komiwojadżer
         public int suma;
         public Para(int[] a, int b)
         {
-            listaa = a;
+            this.listaa = a;
             suma = b;
         }
     }
@@ -45,7 +45,6 @@ namespace Komiwojadżer
         public void PrnPermut(int k)
         {
             int pom;
-            int[] pom1;
             int m = lista.Length;
             if (k == m)
             {
@@ -56,8 +55,14 @@ namespace Komiwojadżer
                 pom = Suma();
                 if (para.suma>pom)
                 {
-                    para.listaa = lista;
-                    para.suma = pom;
+                    //-----------------------------------------------------------------------------------
+                    //-----------------------------------------------------------------------------------
+
+                    para.listaa = lista;//----------TO NIE DZIAŁA
+                    para.suma = pom;    //----------TO DZIAŁA
+
+                    //-----------------------------------------------------------------------------------
+                    //-----------------------------------------------------------------------------------
                 }
             }
             else

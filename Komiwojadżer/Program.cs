@@ -20,12 +20,7 @@ namespace Komiwojadżer
             }
             Console.Write("\n");
             permutacje.PrnPermut(0);
-            foreach (var i in permutacje.lista)
-            {
-                Console.Write(i + " ");
-            }
-            Console.Write("\n");
-
+     
 
 
             for (int i =0;i<permutacje.para.listaa[permutacje.para.listaa.Length-1];i++)
