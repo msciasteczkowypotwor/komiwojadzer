@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Matrix.cs" />
     <Compile Include="Permutacje.cs" />
+    <Compile Include="Permutacje2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

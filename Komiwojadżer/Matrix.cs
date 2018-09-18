@@ -8,10 +8,11 @@ namespace Komiwojadżer
 {
     class Matrix
     {
-        public int[,] matrix { get; set; }
+        public int[,] matrix;
         public Matrix(int n)
         {
             matrix = new int[n, n];
+            Fill();
         }
         public void Fill()
         {

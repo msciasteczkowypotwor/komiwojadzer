@@ -1,44 +1,55 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Komiwojadżer
 {
-    class Para
+    class Para2
     {
         public int[] listaa;
         public int suma;
-        public Para(int a, int b)
+        public Para2(int a, int b)
         {
             listaa = new int[a];
             suma = b;
         }
     }
-    class Permutacje
+    class Permutacje2
     {
 
         public Matrix matrix1;
         public int[] lista;
         public int[] lista1;
         public Para para;
-        public Permutacje(Matrix matrix)
+        public Permutacje2(Matrix matrix)
         {
             matrix1 = matrix;
             lista = new int[matrix.matrix.GetLength(1)];
-            lista1 = new int[(matrix.matrix.GetLength(1) - 1)];
+            lista1 = new int[(matrix.matrix.GetLength(1) - 2)];
             para = new Para(lista.Length, int.MaxValue);
             Fill_list();
-           
+
         }
         private void Fill_list()
         {
-            for(int i = 0; i < lista.Length; i++)
+            for (int i = 0; i < lista.Length; i++)
             {
                 lista[i] = i + 1;
             }
-            for (int j = 0;j < lista1.Length; j++)
+            for (int j = 0, i = 1; j < lista1.Length; i++)
             {
-                lista1[j] = j + 2;
+                if (lista[i] != int.Parse(Thread.CurrentThread.Name) + 2)
+                {
+                    lista1[j] = lista[i];
+                    j++;
+
+                }
             }
+            //for (int i = 0; i < lista1.Length; i++)
+            //    Console.Write(lista1[i] + " ");
         }
         public void SwapTwoNumber(ref int a, ref int b)
         {
@@ -57,8 +68,9 @@ namespace Komiwojadżer
                 if (para.suma > pom)
                 {
                     para.listaa[0] = 1;
+                    para.listaa[1] = int.Parse(Thread.CurrentThread.Name) + 2;
                     for (int aa = 0; aa < lista1.Length; aa++)
-                        para.listaa[aa+1] = lista1[aa];
+                        para.listaa[aa + 2] = lista1[aa];
                     para.suma = pom;
                 }
             }
@@ -73,9 +85,12 @@ namespace Komiwojadżer
         }
         public int Suma()
         {
-            int suma = matrix1.matrix[0, lista1[0] - 1];
+            int suma = matrix1.matrix[0, int.Parse(Thread.CurrentThread.Name) + 1];
+            suma=suma + matrix1.matrix[int.Parse(Thread.CurrentThread.Name) + 1, lista1[0] - 1];
 
-            for (int p = 0; p < lista1.Length-1; p++)
+
+
+            for (int p = 0; p < lista1.Length - 1; p++)
             {
                 suma = suma + matrix1.matrix[lista1[p] - 1, lista1[p + 1] - 1];
             }
