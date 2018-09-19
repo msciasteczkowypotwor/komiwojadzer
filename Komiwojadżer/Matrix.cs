@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Komiwojadżer
 {
     class Matrix
-    {
+    {//
         public int[,] matrix;
         public Matrix(int n)
         {
