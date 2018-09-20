@@ -8,44 +8,76 @@ namespace Komiwojadżer
     {
         static void Main(string[] args)
         {
-            Stopwatch stopWatch = new Stopwatch();
-            Matrix matrix = new Matrix(12);
+            //Process cmd1 = new Process();
+            //cmd1.StartInfo.FileName = "cmd.exe";
+            //cmd1.StartInfo.RedirectStandardInput = true;
+            //cmd1.StartInfo.RedirectStandardOutput = true;
+            //cmd1.StartInfo.CreateNoWindow = true;
+            //cmd1.StartInfo.UseShellExecute = false;
+            //cmd1.Start();
 
-            Permutacje permutacje = new Permutacje(matrix);
-            permutacje.matrix1.Display();
+            //cmd1.StandardInput.WriteLine("del "+ "C:\\Users\\mscia\\Desktop\\czas.txt");
+            //cmd1.StandardInput.Flush();
+            //cmd1.StandardInput.Close();
+            //cmd1.WaitForExit();
+            //Console.WriteLine(cmd1.StandardOutput.ReadToEnd());
+            //for (int h = 0; h < 10; h++)
+            //{
+                Stopwatch stopWatch = new Stopwatch();
+                Matrix matrix = new Matrix(12);
 
-
-            Console.WriteLine("-----------------------------------------------------");
-
-            Console.WriteLine("Sekwencyjnie:");
-            stopWatch.Start();
-            permutacje.PrnPermut(0);
-            stopWatch.Stop();
-            TimeSpan ts = stopWatch.Elapsed;
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",ts.Hours, ts.Minutes, ts.Seconds,ts.Milliseconds);
-
-
-
-            for (int i = 0; i < permutacje.para.listaa.Length; i++)
-                Console.Write(permutacje.para.listaa[i] + " ");
-            Console.Write("\t\t" + permutacje.para.suma + "\n");
-            Console.WriteLine("RunTime " + elapsedTime);
-            stopWatch.Restart();
-            //-------------------------------------------------------------------------------------------------
-            Para_1 para_1 = new Para_1(matrix.matrix.GetLength(1));
+                Permutacje permutacje = new Permutacje(matrix);
+                permutacje.matrix1.Display();
 
 
-            Console.WriteLine("Wielowątkowo:");
-            stopWatch.Start();
-            Licz_watki(matrix, para_1);
-            stopWatch.Stop();
-            ts = stopWatch.Elapsed;
-            foreach (int aa in para_1.lista)
-                Console.Write(aa + " ");
-            Console.WriteLine("\t\t" + para_1.droga);
-            elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",ts.Hours, ts.Minutes, ts.Seconds,ts.Milliseconds);
-            Console.WriteLine("RunTime " + elapsedTime);
+                Console.WriteLine("-----------------------------------------------------");
 
+                Console.WriteLine("Sekwencyjnie:");
+                stopWatch.Start();
+                permutacje.PrnPermut(0);
+                stopWatch.Stop();
+                TimeSpan ts = stopWatch.Elapsed;
+                float time1 = (float)ts.TotalMilliseconds;
+                string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
+
+
+
+                for (int i = 0; i < permutacje.para.listaa.Length; i++)
+                    Console.Write(permutacje.para.listaa[i] + " ");
+                Console.Write("\t\t" + permutacje.para.suma + "\n");
+                Console.WriteLine("RunTime " + elapsedTime);
+                stopWatch.Restart();
+                //-------------------------------------------------------------------------------------------------
+                Para_1 para_1 = new Para_1(matrix.matrix.GetLength(1));
+
+
+                Console.WriteLine("Wielowątkowo:");
+                stopWatch.Start();
+                Licz_watki(matrix, para_1);
+                stopWatch.Stop();
+                ts = stopWatch.Elapsed;
+                foreach (int aa in para_1.lista)
+                    Console.Write(aa + " ");
+                Console.WriteLine("\t\t" + para_1.droga);
+                float time2 = (float)ts.TotalMilliseconds;
+                elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
+                Console.WriteLine("RunTime " + elapsedTime);
+                Console.WriteLine(time1 / time2);
+
+            //    Process cmd = new Process();
+            //    cmd.StartInfo.FileName = "cmd.exe";
+            //    cmd.StartInfo.RedirectStandardInput = true;
+            //    cmd.StartInfo.RedirectStandardOutput = true;
+            //    cmd.StartInfo.CreateNoWindow = true;
+            //    cmd.StartInfo.UseShellExecute = false;
+            //    cmd.Start();
+
+            //    cmd.StandardInput.WriteLine("echo "+ time1 / time2+ " >> C:\\Users\\mscia\\Desktop\\czas.txt");
+            //    cmd.StandardInput.Flush();
+            //    cmd.StandardInput.Close();
+            //    cmd.WaitForExit();
+            //    Console.WriteLine(cmd.StandardOutput.ReadToEnd());
+            //}
 
             Console.ReadKey();
         }
@@ -98,7 +130,7 @@ namespace Komiwojadżer
             lista = new int[a];
         }
 
-        public int Dodaj(int a, int[] b)
+        public void Dodaj(int a, int[] b)
         {
             lock (sumLock)
             {
@@ -113,7 +145,6 @@ namespace Komiwojadżer
 
 
             }
-            return droga;
         }
 
 

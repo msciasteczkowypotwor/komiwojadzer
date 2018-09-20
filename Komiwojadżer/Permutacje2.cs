@@ -19,17 +19,21 @@ namespace Komiwojadżer
     }
     class Permutacje2
     {
-
+        int pom;
         public Matrix matrix1;
         public int[] lista;
         public int[] lista1;
         public Para para;
+        int thread;
+        int lista_leng;
         public Permutacje2(Matrix matrix)
         {
+            thread= int.Parse(Thread.CurrentThread.Name);
             matrix1 = matrix;
             lista = new int[matrix.matrix.GetLength(1)];
             lista1 = new int[(matrix.matrix.GetLength(1) - 2)];
             para = new Para(lista.Length, int.MaxValue);
+            lista_leng = lista1.Length;
             Fill_list();
 
         }
@@ -41,7 +45,7 @@ namespace Komiwojadżer
             }
             for (int j = 0, i = 1; j < lista1.Length; i++)
             {
-                if (lista[i] != int.Parse(Thread.CurrentThread.Name) + 2)
+                if (lista[i] != thread + 2)
                 {
                     lista1[j] = lista[i];
                     j++;
@@ -57,25 +61,24 @@ namespace Komiwojadżer
             a = b;
             b = temp;
         }
-
+        
         public void PrnPermut(int k)
         {
-            int pom;
-            int m = lista1.Length;
-            if (k == m)
+            
+            if (k == lista_leng)
             {
                 pom = Suma();
                 if (para.suma > pom)
                 {
                     para.listaa[0] = 1;
-                    para.listaa[1] = int.Parse(Thread.CurrentThread.Name) + 2;
-                    for (int aa = 0; aa < lista1.Length; aa++)
+                    para.listaa[1] = thread + 2;
+                    for (int aa = 0; aa < lista_leng; aa++)
                         para.listaa[aa + 2] = lista1[aa];
                     para.suma = pom;
                 }
             }
             else
-                for (int i = k; i < m; i++)
+                for (int i = k; i < lista_leng; i++)
                 {
                     SwapTwoNumber(ref lista1[k], ref lista1[i]);
                     PrnPermut(k + 1);
@@ -85,16 +88,16 @@ namespace Komiwojadżer
         }
         public int Suma()
         {
-            int suma = matrix1.matrix[0, int.Parse(Thread.CurrentThread.Name) + 1];
-            suma=suma + matrix1.matrix[int.Parse(Thread.CurrentThread.Name) + 1, lista1[0] - 1];
+            int suma = matrix1.matrix[0, thread + 1];
+            suma=suma + matrix1.matrix[thread + 1, lista1[0] - 1];
 
 
 
-            for (int p = 0; p < lista1.Length - 1; p++)
+            for (int p = 0; p < lista_leng - 1; p++)
             {
                 suma = suma + matrix1.matrix[lista1[p] - 1, lista1[p + 1] - 1];
             }
-            suma = suma + matrix1.matrix[lista1[lista1.Length - 1] - 1, 0];
+            suma = suma + matrix1.matrix[lista1[lista_leng - 1] - 1, 0];
 
             return suma;
         }
